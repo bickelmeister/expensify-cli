@@ -22,7 +22,7 @@ export const loadConfig = (): { transactionFile: string } => {
   if (!existsSync(transactionDir)) {
     mkdirSync(transactionDir, { recursive: true })
     console.log(`Verzeichnis erstellt: ${transactionDir}`)
-  }    
+  }
 
   if (!existsSync(transactionFile)) {
     writeJSONSync(transactionFile, [])
