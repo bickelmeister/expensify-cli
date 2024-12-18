@@ -209,14 +209,17 @@ program
 
     const sortedCategories = Object.entries(categorySums).sort(
       (a, b) => b[1] - a[1],
-    ) // Absteigend sortieren
+    )
 
     sortedCategories.forEach(([category, amount]) => {
       const percentage = ((amount / totalAmount) * 100).toFixed(2)
-      const bar = '█'.repeat(Math.round(parseFloat(percentage) / 2)) // Visuelle Darstellung der Verteilung
+      const bar = '█'.repeat(Math.round(parseFloat(percentage) / 2))
+      const maxCategoryLength = Math.max(
+        ...sortedCategories.map(([category]) => category.length),
+      )
 
       console.log(
-        `${chalk.bold(category.padEnd(20))} | ${bar.padEnd(50)} ${chalk.green(`${percentage}%`)}${chalk.italic(`(${amount}€)`)}`,
+        `${chalk.bold(category.padEnd(maxCategoryLength))} | ${bar.padEnd(50)} ${chalk.green(`${percentage}%`)}${chalk.italic(`(${amount.toFixed(2)}€)`)}`,
       )
     })
 
