@@ -9,7 +9,7 @@
     "prettier-write": "pnpm exec prettier . --write",
     "prettier-check": "pnpm exec prettier . --check",
     "build": "npx tsc",
-    "install": "pnpm run build && pnpm add -g .",
+    "install-local": "pnpm run build && pnpm add -g .",
     "prepare": "husky"
   },
   "keywords": [],
