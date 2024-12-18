@@ -6,8 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier-write": "pnpm exec prettier . --write",
     "build": "npx tsc",
-    "install": "pnpm run build && pnpm add -g ."
+    "install": "pnpm run build && pnpm add -g .",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +33,7 @@
     "eslint-config-prettier": "^9.1.0",
     "expect": "^29.7.0",
     "husky": "^9.1.7",
+    "prettier": "3.4.2",
     "pretty-format": "^29.7.0",
     "typescript": "^5.7.2",
     "undici-types": "^7.1.1"
