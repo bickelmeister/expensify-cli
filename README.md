@@ -1,6 +1,6 @@
-# **Balance CLI**
+# **Expensify CLI**
 
-**Balance CLI** ist ein leistungsstarkes Kommandozeilen-Tool, das dir dabei hilft, deine Ausgaben zu verwalten, Berichte zu erstellen und deine Finanzen im Blick zu behalten. Mit diesem Tool kannst du Transaktionen hinzufügen, bearbeiten, löschen und Berichte zur prozentualen Verteilung der Ausgaben nach Kategorien erstellen.
+**Expensify CLI** ist ein leistungsstarkes Kommandozeilen-Tool, das dir dabei hilft, deine Ausgaben zu verwalten, Berichte zu erstellen und deine Finanzen im Blick zu behalten. Mit diesem Tool kannst du Transaktionen hinzufügen, bearbeiten, löschen und Berichte zur prozentualen Verteilung der Ausgaben nach Kategorien erstellen.
 
 ---
 
@@ -27,12 +27,12 @@ Stelle sicher, dass du **Node.js** installiert hast.
 1. Installiere das Paket global:
 
    ```bash
-   npm install -g balance
+   npm install -g expensify-cli
 
-   pnpm add -g balance
+   pnpm add -g expensify-cli
    ```
 
-2. Nach der Installation steht dir der Befehl `balance` zur Verfügung.
+2. Nach der Installation steht dir der Befehl `exp` zur Verfügung.
 
 ---
 
@@ -43,7 +43,7 @@ Stelle sicher, dass du **Node.js** installiert hast.
 Um die Hilfe für alle verfügbaren Befehle anzuzeigen:
 
 ```bash
-balance --help
+exp --help
 ```
 
 ### **1. Hinzufügen einer Transaktion**
@@ -51,7 +51,7 @@ balance --help
 Füge eine neue Transaktion hinzu:
 
 ```bash
-balance add <date> <category> <description> <amount>
+exp add <date> <category> <description> <amount>
 ```
 
 **Parameter:**
@@ -64,7 +64,7 @@ balance add <date> <category> <description> <amount>
 **Beispiel:**
 
 ```bash
-balance add 18.12.2024 "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00
+exp add 18.12.2024 "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00
 ```
 
 ---
@@ -74,7 +74,7 @@ balance add 18.12.2024 "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00
 Liste alle gespeicherten Transaktionen auf:
 
 ```bash
-balance list
+exp list
 ```
 
 **Optionale Filter:**
@@ -86,9 +86,9 @@ balance list
 **Beispiel:**
 
 ```bash
-balance list --category "Freizeit"
-balance list --date 18.12.2024
-balance list --show-ids
+exp list --category "Freizeit"
+exp list --date 18.12.2024
+exp list --show-ids
 ```
 
 ---
@@ -98,7 +98,7 @@ balance list --show-ids
 Bearbeite eine Transaktion anhand ihrer ID:
 
 ```bash
-balance edit <id> [options]
+exp edit <id> [options]
 ```
 
 **Optionen:**
@@ -111,7 +111,7 @@ balance edit <id> [options]
 **Beispiel:**
 
 ```bash
-balance edit 1 --date 19.12.2024 --amount 750.00
+exp edit 1 --date 19.12.2024 --amount 750.00
 ```
 
 ---
@@ -121,13 +121,13 @@ balance edit 1 --date 19.12.2024 --amount 750.00
 Lösche eine Transaktion anhand ihrer ID:
 
 ```bash
-balance remove <id>
+exp remove <id>
 ```
 
 **Beispiel:**
 
 ```bash
-balance remove 2
+exp remove 2
 ```
 
 ---
@@ -137,7 +137,7 @@ balance remove 2
 Erstelle einen Bericht zur prozentualen Verteilung der Transaktionen nach Kategorie:
 
 ```bash
-balance report
+exp report
 ```
 
 **Optionale Filter:**
@@ -147,8 +147,8 @@ balance report
 **Beispiel:**
 
 ```bash
-balance report
-balance report --month 2024-12
+exp report
+exp report --month 2024-12
 ```
 
 ---
@@ -158,13 +158,13 @@ balance report --month 2024-12
 Zeige alle vorhandenen Kategorien an:
 
 ```bash
-balance categories
+exp categories
 ```
 
 **Beispiel:**
 
 ```bash
-balance categories
+exp categories
 ```
 
 ---
@@ -174,37 +174,37 @@ balance categories
 1. **Transaktionen hinzufügen:**
 
    ```bash
-   balance add 18.12.2024 "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00
-   balance add 15.12.2024 "Freizeit" "Theaterbesuch" 35.90
+   exp add 18.12.2024 "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00
+   exp add 15.12.2024 "Freizeit" "Theaterbesuch" 35.90
    ```
 
 2. **Liste aller Transaktionen anzeigen:**
 
    ```bash
-   balance list
+   exp list
    ```
 
 3. **Bearbeiten einer Transaktion:**
 
    ```bash
-   balance edit 1 --amount 750.00
+   exp edit 1 --amount 750.00
    ```
 
 4. **Transaktion löschen:**
 
    ```bash
-   balance remove 2
+   exp remove 2
    ```
 
 5. **Bericht erstellen:**
 
    ```bash
-   balance report --month 2024-12
+   exp report --month 2024-12
    ```
 
 6. **Kategorien anzeigen:**
    ```bash
-   balance categories
+   exp categories
    ```
 
 ---

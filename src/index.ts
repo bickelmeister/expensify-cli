@@ -10,7 +10,7 @@ import {
 import { Transaction } from './types.js'
 
 program
-  .name('balance')
+  .name('exppensify cli')
   .description('Hold your balance while tracking your expenses.')
   .version('0.0.1')
 

@@ -1,5 +1,5 @@
 {
-  "name": "balance",
+  "name": "expensify-cli",
   "version": "0.0.1",
   "description": "A CLI tool to manage transactions and generate reports regarding your expenses",
   "main": "dist/index.js",
@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "balance": "./dist/index.js"
+    "exp": "./dist/index.js"
   },
   "dependencies": {
     "chalk": "^5.3.0",
