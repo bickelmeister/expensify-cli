@@ -93,26 +93,33 @@ program
   .option('-d, --date <date>', 'New date of the transaction')
   .option('-c, --category <category>', 'New category for the transaction')
   .option('-a, --amount <amount>', 'New amount for the transaction')
-  .option('-desc, --description <description>', 'New description for the transaction')
+  .option(
+    '-desc, --description <description>',
+    'New description for the transaction',
+  )
   .action((id: string, options) => {
-    let transactions = loadTransactions();
+    let transactions = loadTransactions()
 
-    const transactionIndex = transactions.findIndex((t) => t.id === parseInt(id));
+    const transactionIndex = transactions.findIndex(
+      (t) => t.id === parseInt(id),
+    )
     if (transactionIndex === -1) {
-      console.log(chalk.red('Keine Transaktion mit dieser ID gefunden.'));
-      return;
+      console.log(chalk.red('Keine Transaktion mit dieser ID gefunden.'))
+      return
     }
 
-    if (options.date) transactions[transactionIndex].date = options.date;
-    if (options.category) transactions[transactionIndex].category = options.category;
-    if (options.amount) transactions[transactionIndex].amount = parseFloat(options.amount);
-    if (options.description) transactions[transactionIndex].description = options.description;
+    if (options.date) transactions[transactionIndex].date = options.date
+    if (options.category)
+      transactions[transactionIndex].category = options.category
+    if (options.amount)
+      transactions[transactionIndex].amount = parseFloat(options.amount)
+    if (options.description)
+      transactions[transactionIndex].description = options.description
 
-    saveTransaction(transactions);
+    saveTransaction(transactions)
 
-    console.log(chalk.green('Transaktion erfolgreich aktualisiert.'));
-  });
-
+    console.log(chalk.green('Transaktion erfolgreich aktualisiert.'))
+  })
 
 program
   .command('remove')
@@ -136,94 +143,110 @@ program
     console.log(chalk.green('Transaktion erfolgreich entfernt.'))
   })
 
-  program
+program
   .command('report')
-  .description('Generate a report showing the percentage distribution of transactions by category')
+  .description(
+    'Generate a report showing the percentage distribution of transactions by category',
+  )
   .option('-m, --month <month>', 'Specify a month in YYYY-MM format')
   .action((options: { month?: string }) => {
-    const transactions = loadTransactions();
+    const transactions = loadTransactions()
 
     if (transactions.length === 0) {
-      console.log(chalk.yellow('Keine Transaktionen gefunden.'));
-      return;
+      console.log(chalk.yellow('Keine Transaktionen gefunden.'))
+      return
     }
 
-    let filteredTransactions = transactions;
+    let filteredTransactions = transactions
     if (options.month) {
-      const [year, month] = options.month.split('-');
+      const [year, month] = options.month.split('-')
       if (!year || !month) {
-        console.log(chalk.red('Ungültiges Datumsformat. Bitte YYYY-MM verwenden.'));
-        return;
+        console.log(
+          chalk.red('Ungültiges Datumsformat. Bitte YYYY-MM verwenden.'),
+        )
+        return
       }
 
       filteredTransactions = transactions.filter((transaction) => {
-        const [day, monthStr, yearStr] = transaction.date.split('.');
-        const transactionYear = parseInt(yearStr, 10);
-        const transactionMonth = parseInt(monthStr, 10);
-      
-        return transactionYear === parseInt(year, 10) && transactionMonth === parseInt(month, 10);
-      });
+        const [day, monthStr, yearStr] = transaction.date.split('.')
+        const transactionYear = parseInt(yearStr, 10)
+        const transactionMonth = parseInt(monthStr, 10)
+
+        return (
+          transactionYear === parseInt(year, 10) &&
+          transactionMonth === parseInt(month, 10)
+        )
+      })
 
       if (filteredTransactions.length === 0) {
-        console.log(chalk.yellow(`Keine Transaktionen für ${options.month} gefunden.`));
-        return;
+        console.log(
+          chalk.yellow(`Keine Transaktionen für ${options.month} gefunden.`),
+        )
+        return
       }
     }
 
-    const categorySums: { [key: string]: number } = {};
+    const categorySums: { [key: string]: number } = {}
     filteredTransactions.forEach((transaction) => {
       if (!categorySums[transaction.category]) {
-        categorySums[transaction.category] = 0;
+        categorySums[transaction.category] = 0
       }
-      categorySums[transaction.category] += transaction.amount;
-    });
+      categorySums[transaction.category] += transaction.amount
+    })
 
-    const totalAmount = Object.values(categorySums).reduce((sum, value) => sum + value, 0);
+    const totalAmount = Object.values(categorySums).reduce(
+      (sum, value) => sum + value,
+      0,
+    )
 
     console.log(
       chalk.blue.bold(
         `\nProzentuale Verteilung der Transaktionen nach Kategorie${
           options.month ? ` für ${options.month}` : ''
-        }:\n`
-      )
-    );
+        }:\n`,
+      ),
+    )
 
-    const sortedCategories = Object.entries(categorySums).sort((a, b) => b[1] - a[1]); // Absteigend sortieren
+    const sortedCategories = Object.entries(categorySums).sort(
+      (a, b) => b[1] - a[1],
+    ) // Absteigend sortieren
 
     sortedCategories.forEach(([category, amount]) => {
-      const percentage = ((amount / totalAmount) * 100).toFixed(2);
-      const bar = '█'.repeat(Math.round((parseFloat(percentage) / 2))); // Visuelle Darstellung der Verteilung
+      const percentage = ((amount / totalAmount) * 100).toFixed(2)
+      const bar = '█'.repeat(Math.round(parseFloat(percentage) / 2)) // Visuelle Darstellung der Verteilung
 
       console.log(
-        `${chalk.bold(category.padEnd(20))} | ${bar.padEnd(50)} ${chalk.green(`${percentage}%`)}${chalk.italic(`(${amount}€)`)}`
-      );
-    });
+        `${chalk.bold(category.padEnd(20))} | ${bar.padEnd(50)} ${chalk.green(`${percentage}%`)}${chalk.italic(`(${amount}€)`)}`,
+      )
+    })
 
-    console.log(chalk.bold(`\nGesamtbetrag: €${totalAmount.toFixed(2)}`));
-  });
+    console.log(chalk.bold(`\nGesamtbetrag: €${totalAmount.toFixed(2)}`))
+  })
 
-  program
+program
   .command('categories')
   .description('List all unique categories from transactions')
   .action(() => {
-    const transactions = loadTransactions();
+    const transactions = loadTransactions()
 
     if (transactions.length === 0) {
-      console.log(chalk.yellow('Keine Transaktionen gefunden.'));
-      return;
+      console.log(chalk.yellow('Keine Transaktionen gefunden.'))
+      return
     }
 
     const uniqueCategories = [
       ...new Set(transactions.map((transaction) => transaction.category)),
-    ];
+    ]
 
-    console.log(chalk.blue.bold('\nVorhandene Kategorien:'));
+    console.log(chalk.blue.bold('\nVorhandene Kategorien:'))
     uniqueCategories.forEach((category) => {
-      console.log(`- ${chalk.green(category)}`);
-    });
+      console.log(`- ${chalk.green(category)}`)
+    })
 
-    console.log(chalk.bold(`\nInsgesamt ${uniqueCategories.length} Kategorien gefunden.`));
-  });
+    console.log(
+      chalk.bold(`\nInsgesamt ${uniqueCategories.length} Kategorien gefunden.`),
+    )
+  })
 
 program.parse(process.argv)
 
