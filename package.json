@@ -1,0 +1,37 @@
+{
+  "name": "balance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "install": "pnpm run build && pnpm add -g ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "balance": "./dist/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.7",
+    "fs-extra": "^11.2.0",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.26.3",
+    "@babel/types": "^7.26.3",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.10.2",
+    "@types/uuid": "^10.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "expect": "^29.7.0",
+    "pretty-format": "^29.7.0",
+    "typescript": "^5.7.2",
+    "undici-types": "^7.1.1"
+  }
+}
