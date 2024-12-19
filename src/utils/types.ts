@@ -1,5 +1,3 @@
-import { UUID } from 'crypto'
-
 export interface Transaction {
   id: number
   date: string

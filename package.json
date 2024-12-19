@@ -5,12 +5,14 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prettier-write": "pnpm exec prettier . --write",
     "prettier-check": "pnpm exec prettier . --check",
     "build": "npx tsc",
     "install-local": "pnpm run build && pnpm add -g .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release:patch": "pnpm version patch && pnpm publish",
+    "release:minor": "pnpm version minor && pnpm publish",
+    "release:major": "pnpm version major && pnpm publish"
   },
   "keywords": [],
   "author": "",

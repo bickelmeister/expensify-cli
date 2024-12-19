@@ -1,4 +1,3 @@
-import chalk from 'chalk'
 import { existsSync } from 'fs'
 import { readJSONSync, writeJSONSync } from 'fs-extra/esm'
 import { loadConfig } from './setup.js'

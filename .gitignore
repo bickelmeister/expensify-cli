@@ -45,3 +45,4 @@ node_modules/**/node_modules
 
 # Ignore project related stuff
 /storage
+.npmrc
