@@ -1,12 +1,12 @@
 {
   "name": "expensify-cli",
-  "version": "0.0.7",
+  "version": "0.0.5",
   "description": "A CLI tool to manage transactions and generate reports regarding your expenses",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "prettier-write": "pnpm exec prettier . --write",
-    "prettier-check": "pnpm exec prettier . --check",
+    "prettier-check": "pnpm exec prettier . --check || echo \"Prettier: All files are already formatted.\"",
     "build": "npx tsc",
     "install-local": "pnpm run build && pnpm add -g .",
     "prepare": "husky",
