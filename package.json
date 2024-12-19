@@ -1,6 +1,6 @@
 {
   "name": "expensify-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A CLI tool to manage transactions and generate reports regarding your expenses",
   "main": "dist/index.js",
   "type": "module",
