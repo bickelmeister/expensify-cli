@@ -1,6 +1,7 @@
 import { Command } from 'commander'
 import { loadTransactions } from '../utils/storage.js'
 import chalk from 'chalk'
+import { getCurrencyInUse } from '../utils/config.js'
 
 const registerReportCommand = (program: Command) => {
   program
@@ -11,6 +12,7 @@ const registerReportCommand = (program: Command) => {
     .option('-m, --month <month>', 'Specify a month in YYYY-MM format')
     .action((options: { month?: string }) => {
       const transactions = loadTransactions()
+      const activeCurrency = getCurrencyInUse()
 
       if (transactions.length === 0) {
         console.log(chalk.yellow('Keine Transaktionen gefunden.'))
@@ -79,11 +81,15 @@ const registerReportCommand = (program: Command) => {
         )
 
         console.log(
-          `${chalk.bold(category.padEnd(maxCategoryLength))} | ${bar.padEnd(50)} ${chalk.green(`${percentage}%`)}${chalk.italic(`(${amount.toFixed(2)}€)`)}`,
+          `${chalk.bold(category.padEnd(maxCategoryLength))} | ${bar.padEnd(50)} ${chalk.green(`${percentage}%`)}${chalk.italic(`(${amount.toFixed(2)}${activeCurrency.symbol})`)}`,
         )
       })
 
-      console.log(chalk.bold(`\nGesamtbetrag: €${totalAmount.toFixed(2)}`))
+      console.log(
+        chalk.bold(
+          `\nGesamtbetrag: ${totalAmount.toFixed(2)}${activeCurrency.symbol}`,
+        ),
+      )
     })
 }
 

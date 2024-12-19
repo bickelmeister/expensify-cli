@@ -2,6 +2,7 @@ import chalk from 'chalk'
 import { Command } from 'commander'
 import { loadTransactions } from '../utils/storage.js'
 import { parseDate } from '../utils/helpers.js'
+import { getCurrencyInUse } from '../utils/config.js'
 
 const registerListCommand = (program: Command) => {
   program
@@ -19,6 +20,7 @@ const registerListCommand = (program: Command) => {
         descending?: boolean
       }) => {
         const transactions = loadTransactions()
+        const activeCurrency = getCurrencyInUse()
 
         let filteredTransactions = transactions
 
@@ -59,14 +61,14 @@ const registerListCommand = (program: Command) => {
               `${chalk.bold(chalk.blue(transaction.id))} - ${transaction.date} - ${
                 transaction.category
               } - ${transaction.description} - ${chalk.green(
-                `€${transaction.amount.toFixed(2)}`,
+                `${transaction.amount.toFixed(2)}${activeCurrency.symbol}`,
               )}`,
             )
           } else {
             console.log(
               `${chalk.bold(transaction.date)} - ${transaction.category} - ${
                 transaction.description
-              } - ${chalk.green(`€${transaction.amount.toFixed(2)}`)}`,
+              } - ${chalk.green(`${transaction.amount.toFixed(2)}${activeCurrency.symbol}`)}`,
             )
           }
         })
