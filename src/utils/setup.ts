@@ -1,7 +1,6 @@
-import path from 'path'
-import { config } from 'dotenv'
 import { existsSync, mkdirSync } from 'fs'
 import { writeJSONSync } from 'fs-extra/esm'
+import path from 'path'
 
 const TRANSACTION_FILE = path.join(
   process.cwd(),

@@ -231,4 +231,4 @@ Dieses Projekt steht unter der **MIT-Lizenz**. Weitere Informationen findest du 
 ---
 
 Viel Spaß beim Verwalten deiner Ausgaben! 😊  
-Wenn du Fragen oder Probleme hast, erstelle ein **Issue** auf GitHub!
+Wenn du Fragen oder Probleme hast, erstelle ein [**Issue** auf GitHub](https://github.com/bickelmeister/expensify-cli/issues)!

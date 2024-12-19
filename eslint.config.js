@@ -1,5 +1,11 @@
 export default [
+  { parser: '@typescript-eslint/parser' },
   {
-    extends: ['prettier'],
+    extends: [
+      'eslint:recommended',
+      'plugin:@typescript-eslint/recommended',
+      'prettier',
+    ],
   },
+  { plugins: ['@typescript-eslint'] },
 ]
