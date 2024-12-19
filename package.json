@@ -15,8 +15,8 @@
     "release:major": "pnpm version major && pnpm publish && git push && git push --tags"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Elmar Bickel (@bickelmeister)",
+  "license": "MIT",
   "bin": {
     "exp": "./dist/index.js"
   },
