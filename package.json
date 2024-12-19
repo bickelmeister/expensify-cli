@@ -10,9 +10,9 @@
     "build": "npx tsc",
     "install-local": "pnpm run build && pnpm add -g .",
     "prepare": "husky",
-    "release:patch": "pnpm version patch && pnpm publish",
-    "release:minor": "pnpm version minor && pnpm publish",
-    "release:major": "pnpm version major && pnpm publish"
+    "release:patch": "pnpm version patch && git add package.json pnpm-lock.yaml && git commit -m \"chore(release): bump version\" && git tag $(jq -r .version package.json) && git push --follow-tags && pnpm publish",
+    "release:minor": "pnpm version minor && git add package.json pnpm-lock.yaml && git commit -m \"chore(release): bump version\" && git tag $(jq -r .version package.json) && git push --follow-tags && pnpm publish",
+    "release:major": "pnpm version major && git add package.json pnpm-lock.yaml && git commit -m \"chore(release): bump version\" && git tag $(jq -r .version package.json) && git push --follow-tags && pnpm publish"
   },
   "keywords": [],
   "author": "",
