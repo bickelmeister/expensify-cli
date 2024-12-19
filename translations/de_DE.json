@@ -1,0 +1,10 @@
+{
+  "commands": {
+    "config": {
+      "description": "Konfigurationseinstellungen anzeigen oder aktualisieren",
+      "view": "Aktuelle und verfügbare Konfigurationseinstellungen anzeigen",
+      "setCurrency": "Lege eine Währung fest (z. B. USD, EUR)",
+      "setLanguage": "Lege eine Sprache fest (z. B. en_001, de_DE)"
+    }
+  }
+}

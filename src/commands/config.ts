@@ -4,32 +4,44 @@ import {
   loadConfig,
   setCurrencyInUse,
   getCurrencyInUse,
+  setLanguage,
 } from '../utils/config.js'
+import { translate } from '../utils/translator.js'
 
 const registerConfigCommand = (program: Command) => {
   program
     .command('config')
-    .description('View or update configuration settings')
-    .option('-v, --view', 'View current configuration')
+    .description(translate('commands.config.description'))
+    .option('-v, --view', translate('commands.config.view'))
     .option(
       '--set-currency <currency>',
-      'Set the active currency (e.g., USD, EUR)',
+      translate('commands.config.setCurrency'),
     )
-    .action(async (options) => {
+    .option(
+      '--set-language <language>',
+      translate('commands.config.setLanguage'),
+    )
+    .action((options) => {
       if (options.view) {
-        const config = await loadConfig()
+        const config = loadConfig()
         console.log(chalk.blue('Current Configuration:'))
-        console.log(JSON.stringify(config, null, 2))
+        console.log(config)
       } else if (options.setCurrency) {
         try {
-          const updatedConfig = await setCurrencyInUse(
+          const updatedConfig = setCurrencyInUse(
             options.setCurrency.toUpperCase(),
           )
           console.log(chalk.green('Active currency updated successfully!'))
-          const activeCurrency = await getCurrencyInUse()
+          const activeCurrency = getCurrencyInUse()
           console.log(
             `Active Currency: ${activeCurrency.label} (${activeCurrency.symbol})`,
           )
+        } catch (error: any) {
+          console.error(chalk.red(error.message))
+        }
+      } else if (options.setLanguage) {
+        try {
+          setLanguage(options.setLanguage)
         } catch (error: any) {
           console.error(chalk.red(error.message))
         }

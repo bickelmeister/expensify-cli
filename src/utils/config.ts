@@ -1,10 +1,12 @@
+import chalk from 'chalk'
 import { existsSync } from 'fs'
 import { readJSONSync, writeJSONSync } from 'fs-extra/esm'
 import path from 'path'
 
-const CONFIG_FILE = path.join(process.cwd(), 'transactions.json')
+const CONFIG_FILE = path.join(process.cwd(), 'expensify-cli-config.json')
 
 const DEFAULT_CONFIG = {
+  language: 'en_001',
   currencies: [
     { label: 'EUR', symbol: '€', inUse: true },
     { label: 'USD', symbol: '$', inUse: false },
@@ -18,8 +20,7 @@ export const loadConfig = (): any => {
     console.log(`Konfigurationsdatei erstellt: ${CONFIG_FILE}`)
   }
 
-  const config = readJSONSync(CONFIG_FILE)
-  return config
+  return readJSONSync(CONFIG_FILE)
 }
 
 export const saveConfig = (config: any): void => {
@@ -41,6 +42,20 @@ export const setCurrencyInUse = (label: string): void => {
 
   saveConfig(config)
   console.log(`Aktive Währung auf "${label}" gesetzt.`)
+}
+
+export const setLanguage = (language: string): void => {
+  const config = loadConfig()
+
+  const supportedLanguages = ['en_001', 'de_DE']
+  if (!supportedLanguages.includes(language)) {
+    throw new Error(`Language "${language}" is not supported.`)
+  }
+
+  // Sprache in der Konfiguration setzen
+  config.language = language
+  saveConfig(config)
+  console.log(chalk.yellow(`Language set to "${language}".`))
 }
 
 export const getCurrencyInUse = (): any => {
