@@ -51,20 +51,20 @@ exp --help
 Füge eine neue Transaktion hinzu:
 
 ```bash
-exp add <date> <category> <description> <amount>
+exp add <category> <description> <amount> <date>
 ```
 
 **Parameter:**
 
-- `<date>`: Datum der Transaktion im Format `DD.MM.YYYY`.
 - `<category>`: Kategorie der Ausgabe.
 - `<description>`: Beschreibung der Transaktion.
 - `<amount>`: Betrag der Ausgabe (Dezimalzahlen mit `,` oder `.` erlaubt).
+- `[date]`: Datum der Transaktion im Format `DD.MM.YYYY(optional, default ist Heute)`.
 
 **Beispiel:**
 
 ```bash
-exp add 18.12.2024 "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00
+exp add "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00 18.12.2024
 ```
 
 ---
