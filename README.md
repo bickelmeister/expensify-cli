@@ -82,6 +82,7 @@ exp list
 - **`--category` oder `-c`**: Filtere Transaktionen nach einer Kategorie.
 - **`--date` oder `-d`**: Filtere Transaktionen nach einem bestimmten Datum.
 - **`--show-ids` oder `-id`**: Zeige zusätzlich die IDs der Transaktionen an.
+- **`--descending` oder `-desc`**: Ändert die Sortierreihenfolge (nach Datum absteigen)
 
 **Beispiel:**
 
@@ -89,6 +90,7 @@ exp list
 exp list --category "Freizeit"
 exp list --date 18.12.2024
 exp list --show-ids
+exp list --descending
 ```
 
 ---

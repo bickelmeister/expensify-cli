@@ -8,3 +8,8 @@ export function normalizeAndParse(amount: string): number {
 
   return parsedAmount
 }
+
+export function parseDate(dateString: string): Date {
+  const [day, month, year] = dateString.split('.')
+  return new Date(`${year}-${month}-${day}`)
+}
