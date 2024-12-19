@@ -10,9 +10,9 @@
     "build": "npx tsc",
     "install-local": "pnpm run build && pnpm add -g .",
     "prepare": "husky",
-    "release:minor": "pnpm version minor && pnpm publish",
-    "release:patch": "pnpm version patch && pnpm publish",
-    "release:major": "pnpm version major && pnpm publish"
+    "release:minor": "pnpm version minor && pnpm publish && git push && git push --tags",
+    "release:patch": "pnpm version patch && pnpm publish && git push && git push --tags",
+    "release:major": "pnpm version major && pnpm publish && git push && git push --tags"
   },
   "keywords": [],
   "author": "",
