@@ -1,93 +1,95 @@
-# **Expensify CLI**
+# Expensify CLI
 
-**Expensify CLI** ist ein leistungsstarkes Kommandozeilen-Tool, das dir dabei hilft, deine Ausgaben zu verwalten, Berichte zu erstellen und deine Finanzen im Blick zu behalten. Mit diesem Tool kannst du Transaktionen hinzufügen, bearbeiten, löschen und Berichte zur prozentualen Verteilung der Ausgaben nach Kategorien erstellen.
+The **Expensify CLI** is a powerful command-line tool that helps you manage your expenses, create reports, and keep track of your finances. With this tool, you can add, edit, delete transactions, and generate reports on the percentage distribution of expenses by category.
 
 ---
 
-## **Inhalt**
+## **Contents**
 
 1. [Installation](#installation)
-2. [Verwendung](#verwendung)
-   - [Hinzufügen einer Transaktion](#hinzufügen-einer-transaktion)
-   - [Anzeigen von Transaktionen](#anzeigen-von-transaktionen)
-   - [Bearbeiten einer Transaktion](#bearbeiten-einer-transaktion)
-   - [Löschen einer Transaktion](#löschen-einer-transaktion)
-   - [Erstellen eines Berichts](#erstellen-eines-berichts)
-   - [Anzeigen aller Kategorien](#anzeigen-aller-kategorien)
-3. [Beispiele](#beispiele)
-4. [Fehlerbehandlung](#fehlerbehandlung)
-5. [Lizenz](#lizenz)
+2. [Usage](#usage)
+   - [Add a Transaction](#add-a-transaction)
+   - [View Transactions](#view-transactions)
+   - [Edit a Transaction](#edit-a-transaction)
+   - [Delete a Transaction](#delete-a-transaction)
+   - [Generate a Report](#generate-a-report)
+   - [View All Categories](#view-all-categories)
+   - [Set Configuration Options](#set-configuration-options)
+3. [Examples](#examples)
+4. [Error Handling](#error-handling)
+5. [License](#license)
 
 ---
 
 ## **Installation**
 
-Stelle sicher, dass du **Node.js** installiert hast.
+Make sure **Node.js** is installed on your system.
 
-1. Installiere das Paket global:
+1. Install the package globally:
 
    ```bash
    npm install -g expensify-cli
-
    pnpm add -g expensify-cli
    ```
 
-2. Nach der Installation steht dir der Befehl `exp` zur Verfügung.
+2. After installation, you can use the `exp` command.
 
 ---
 
-## **Verwendung**
+## **Usage**
 
-### **Hilfe anzeigen**
+### **Help Command**
 
-Um die Hilfe für alle verfügbaren Befehle anzuzeigen:
+To view help for all available commands:
 
 ```bash
 exp --help
 ```
 
-### **1. Hinzufügen einer Transaktion**
+---
 
-Füge eine neue Transaktion hinzu:
+### **1. Add a Transaction**
+
+Add a new transaction:
 
 ```bash
 exp add <category> <description> <amount> <date>
 ```
 
-**Parameter:**
+**Parameters:**
 
-- `<category>`: Kategorie der Ausgabe.
-- `<description>`: Beschreibung der Transaktion.
-- `<amount>`: Betrag der Ausgabe (Dezimalzahlen mit `,` oder `.` erlaubt).
-- `[date]`: Datum der Transaktion im Format `DD.MM.YYYY(optional, default ist Heute)`.
+- `<category>`: The category of the expense.
+- `<description>`: A description of the transaction.
+- `<amount>`: The amount spent (accepts decimals with either `,` or `.`).
+- `[date]`: The date of the transaction in the format `DD.MM.YYYY` (optional, defaults to today).
 
-**Beispiel:**
+**Example:**
 
 ```bash
-exp add "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00 18.12.2024
+exp add "Household & Living" "Monthly household budget" 800.00 18.12.2024
 ```
 
 ---
 
-### **2. Anzeigen von Transaktionen**
+### **2. View Transactions**
 
-Liste alle gespeicherten Transaktionen auf:
+List all stored transactions:
 
 ```bash
 exp list
 ```
 
-**Optionale Filter:**
+**Optional Filters:**
 
-- **`--category` oder `-c`**: Filtere Transaktionen nach einer Kategorie.
-- **`--date` oder `-d`**: Filtere Transaktionen nach einem bestimmten Datum.
-- **`--show-ids` oder `-id`**: Zeige zusätzlich die IDs der Transaktionen an.
-- **`--descending` oder `-desc`**: Ändert die Sortierreihenfolge (nach Datum absteigen)
+- **`--category` or `-c`**: Filter transactions by category.
+- **`--date` or `-d`**: Filter transactions by a specific date.
+- **`--show-ids` or `-id`**: Display the IDs of the transactions.
+- **`--descending` or `-desc`**: Change the sort order (descending by date).
 
-**Beispiel:**
+**Example:**
 
 ```bash
-exp list --category "Freizeit"
+exp list --category "Leisure"
 exp list --date 18.12.2024
 exp list --show-ids
 exp list --descending
@@ -95,22 +97,22 @@ exp list --descending
 
 ---
 
-### **3. Bearbeiten einer Transaktion**
+### **3. Edit a Transaction**
 
-Bearbeite eine Transaktion anhand ihrer ID:
+Edit a transaction by its ID:
 
 ```bash
 exp edit <id> [options]
 ```
 
-**Optionen:**
+**Options:**
 
-- **`-d, --date <date>`**: Ändere das Datum.
-- **`-c, --category <category>`**: Ändere die Kategorie.
-- **`-a, --amount <amount>`**: Ändere den Betrag.
-- **`-desc, --description <description>`**: Ändere die Beschreibung.
+- **`-d, --date <date>`**: Change the date.
+- **`-c, --category <category>`**: Change the category.
+- **`-a, --amount <amount>`**: Change the amount.
+- **`-desc, --description <description>`**: Change the description.
 
-**Beispiel:**
+**Example:**
 
 ```bash
 exp edit 1 --date 19.12.2024 --amount 750.00
@@ -118,15 +120,15 @@ exp edit 1 --date 19.12.2024 --amount 750.00
 
 ---
 
-### **4. Löschen einer Transaktion**
+### **4. Delete a Transaction**
 
-Lösche eine Transaktion anhand ihrer ID:
+Delete a transaction by its ID:
 
 ```bash
 exp remove <id>
 ```
 
-**Beispiel:**
+**Example:**
 
 ```bash
 exp remove 2
@@ -134,19 +136,19 @@ exp remove 2
 
 ---
 
-### **5. Erstellen eines Berichts**
+### **5. Generate a Report**
 
-Erstelle einen Bericht zur prozentualen Verteilung der Transaktionen nach Kategorie:
+Generate a report showing the percentage distribution of transactions by category:
 
 ```bash
 exp report
 ```
 
-**Optionale Filter:**
+**Optional Filters:**
 
-- **`--month` oder `-m`**: Erstelle den Bericht für einen bestimmten Monat (Format `YYYY-MM`).
+- **`--month` or `-m`**: Generate a report for a specific month (format `YYYY-MM`).
 
-**Beispiel:**
+**Example:**
 
 ```bash
 exp report
@@ -155,15 +157,15 @@ exp report --month 2024-12
 
 ---
 
-### **6. Anzeigen aller Kategorien**
+### **6. View All Categories**
 
-Zeige alle vorhandenen Kategorien an:
+List all available categories:
 
 ```bash
 exp categories
 ```
 
-**Beispiel:**
+**Example:**
 
 ```bash
 exp categories
@@ -171,66 +173,114 @@ exp categories
 
 ---
 
-## **Beispiele**
+### **7. Set Configuration Options**
 
-1. **Transaktionen hinzufügen:**
+Update CLI settings, such as the active currency or language:
+
+**Set Active Currency:**
+
+```bash
+exp config --set-currency <currency>
+```
+
+- `<currency>`: Specify the currency code (e.g., USD, EUR).
+
+**Set Language:**
+
+```bash
+exp config --set-language <language>
+```
+
+- `<language>`: Specify the language code (e.g., en_001, de).
+
+**View Configuration:**
+
+```bash
+exp config --view
+```
+
+**Example:**
+
+```bash
+exp config --set-currency USD
+exp config --set-language en_001
+exp config --view
+```
+
+---
+
+## **Examples**
+
+1. **Add Transactions:**
 
    ```bash
-   exp add 18.12.2024 "Haushalt & Wohnen" "Monatliches Haushaltsbudget" 800,00
-   exp add 15.12.2024 "Freizeit" "Theaterbesuch" 35.90
+   exp add "Leisure" "Theatre visit" 35.90 15.12.2024
+   exp add "Household & Living" "Monthly household budget" 800.00 18.12.2024
    ```
 
-2. **Liste aller Transaktionen anzeigen:**
+2. **List All Transactions:**
 
    ```bash
    exp list
    ```
 
-3. **Bearbeiten einer Transaktion:**
+3. **Edit a Transaction:**
 
    ```bash
    exp edit 1 --amount 750.00
    ```
 
-4. **Transaktion löschen:**
+4. **Delete a Transaction:**
 
    ```bash
    exp remove 2
    ```
 
-5. **Bericht erstellen:**
+5. **Generate a Report:**
 
    ```bash
    exp report --month 2024-12
    ```
 
-6. **Kategorien anzeigen:**
+6. **View All Categories:**
+
    ```bash
    exp categories
    ```
 
----
-
-## **Fehlerbehandlung**
-
-1. **Ungültiges Datumsformat**:
-
-   - Das Datum muss im Format `DD.MM.YYYY` für Transaktionen oder `YYYY-MM` für Berichte eingegeben werden.
-
-2. **Ungültiger Betrag**:
-
-   - Der Betrag muss eine gültige Zahl sein (z. B. `800,00` oder `800.00`).
-
-3. **ID nicht gefunden**:
-   - Stelle sicher, dass die Transaktions-ID korrekt ist, wenn du `edit` oder `remove` verwendest.
+7. **Update Configuration:**
+   ```bash
+   exp config --set-currency EUR
+   exp config --set-language de
+   exp config --view
+   ```
 
 ---
 
-## **Lizenz**
+## **Error Handling**
 
-Dieses Projekt steht unter der **MIT-Lizenz**. Weitere Informationen findest du in der [LICENSE-Datei](./LICENSE).
+1. **Invalid Date Format**:
+
+   - Dates must be entered in the format `DD.MM.YYYY` for transactions or `YYYY-MM` for reports.
+
+2. **Invalid Amount**:
+
+   - Amounts must be valid numbers (e.g., `800.00` or `800,00`).
+
+3. **ID Not Found**:
+
+   - Ensure the transaction ID is correct when using `edit` or `remove`.
+
+4. **Unsupported Language or Currency**:
+   - Check the supported language or currency codes when updating the configuration.
 
 ---
 
-Viel Spaß beim Verwalten deiner Ausgaben! 😊  
-Wenn du Fragen oder Probleme hast, erstelle ein [**Issue** auf GitHub](https://github.com/bickelmeister/expensify-cli/issues)!
+## **License**
+
+This project is licensed under the **MIT License**. For more details, refer to the [LICENSE file](./LICENSE).
+
+---
+
+Enjoy managing your expenses! 😊  
+If you have any questions or issues, please create an [**issue** on GitHub](https://github.com/bickelmeister/expensify-cli/issues).
