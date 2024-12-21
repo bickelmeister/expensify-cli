@@ -5,6 +5,14 @@
       "view": "View current and available configuration settings",
       "setCurrency": "Set your currency (e.g., USD, EUR)",
       "setLanguage": "Set your language (e.g., en_001, de_DE)"
+    },
+    "import": {
+      "description": "Import transactions from a CSV file",
+      "filepath": "Path to the CSV file to import"
+    },
+    "export": {
+      "description": "Export transactions to a CSV file",
+      "filepath": "Specify a directory or file path for the export. If a directory is provided, the file will be named\"expensify-export.csv\". Defaults to the current working directory."
     }
   }
 }

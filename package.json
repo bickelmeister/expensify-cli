@@ -21,8 +21,10 @@
     "exp": "./dist/index.js"
   },
   "dependencies": {
+    "@json2csv/plainjs": "^7.0.6",
     "chalk": "^5.3.0",
     "commander": "^12.1.0",
+    "csv-parse": "^5.6.0",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "expensify-cli": "link:",

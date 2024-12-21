@@ -6,6 +6,8 @@ import { registerListCommand } from './list.js'
 import { registerRemoveCommand } from './remove.js'
 import { registerReportCommand } from './report.js'
 import { registerConfigCommand } from './config.js'
+import { registerExportCommand } from './export.js'
+import { registerImportCommand } from './import.js'
 
 export const registerCommands = (program: Command) => {
   registerAddCommand(program)
@@ -15,4 +17,6 @@ export const registerCommands = (program: Command) => {
   registerReportCommand(program)
   registerCategoriesCommand(program)
   registerConfigCommand(program)
+  registerImportCommand(program)
+  registerExportCommand(program)
 }
