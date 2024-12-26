@@ -8,7 +8,7 @@
     "prettier-write": "pnpm exec prettier . --write",
     "prettier-check": "pnpm exec prettier . --check || echo \"Prettier: All files are already formatted.\"",
     "build": "npx tsc",
-    "install-local": "pnpm run build && pnpm add -g .",
+    "install-local": "pnpm run build && pnpm add -g $(pwd)",
     "prepare": "husky",
     "release:minor": "pnpm version minor && pnpm publish && git push && git push --tags",
     "release:patch": "pnpm version patch && pnpm publish && git push && git push --tags",

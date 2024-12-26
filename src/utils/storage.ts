@@ -2,6 +2,7 @@ import { existsSync } from 'fs'
 import { readJSONSync, writeJSONSync } from 'fs-extra/esm'
 import { loadConfig } from './setup.js'
 import { Transaction } from './types.js'
+import chalk from 'chalk'
 
 const { transactionFile } = loadConfig()
 
@@ -24,4 +25,16 @@ export const reorderTransactions = (
     ...transaction,
     id: index + 1,
   }))
+}
+
+export const getUniqueCategories = (): string[] => {
+  const transactions = loadTransactions()
+
+  if (transactions.length === 0) {
+    console.log(
+      chalk.yellow('Found no transactions to extract the categories.'),
+    )
+  }
+
+  return [...new Set(transactions.map((transaction) => transaction.category))]
 }
