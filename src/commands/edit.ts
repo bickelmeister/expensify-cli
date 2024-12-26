@@ -1,6 +1,7 @@
 import { Command } from 'commander'
 import { loadTransactions, saveTransaction } from '../utils/storage.js'
 import chalk from 'chalk'
+import { normalizeAndParse } from '../utils/helpers.js'
 
 const registerEditCommand = (program: Command) => {
   program
@@ -29,7 +30,9 @@ const registerEditCommand = (program: Command) => {
       if (options.category)
         transactions[transactionIndex].category = options.category
       if (options.amount)
-        transactions[transactionIndex].amount = parseFloat(options.amount)
+        transactions[transactionIndex].amount = normalizeAndParse(
+          options.amount,
+        )
       if (options.description)
         transactions[transactionIndex].description = options.description
 
