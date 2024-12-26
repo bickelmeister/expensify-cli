@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - import csv command
 - CHANGELOG
 
+### Fixes
+
+- fix issue for `,` or `.` in money amount while editing entry
+
 ## [1.0.0] - 2024-12-19
 
 ### Added
