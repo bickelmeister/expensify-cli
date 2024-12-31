@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- N/A
+
+## [1.1.0] - 2024-01-01
+
+### Added
+
 - export csv command
 - import csv command
 - CHANGELOG
@@ -31,5 +37,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - remove
   - report
 
-[unreleased]: https://github.com/bickelmeister/expensify-cli/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/bickelmeister/expensify-cli/compare/v1.0.1...HEAD
+[1.0.0]: https://github.com/bickelmeister/expensify-cli/compare/v1.0.0...1.1.0
 [1.0.0]: https://github.com/bickelmeister/expensify-cli/releases/tag/v1.0.0
